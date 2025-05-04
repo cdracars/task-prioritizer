@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MetaTags matches snapshot with custom props 1`] = `<div />`;
+
+exports[`MetaTags matches snapshot with default props 1`] = `<div />`;
