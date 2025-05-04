@@ -1,4 +1,10 @@
-import React, { useState, useRef, ChangeEvent, KeyboardEvent } from 'react';
+import React, {
+  useState,
+  useRef,
+  ChangeEvent,
+  KeyboardEvent,
+  useEffect,
+} from 'react';
 import { Button } from './ui/button';
 import useLocalStorage from '../hooks/useLocalStorage';
 
@@ -110,6 +116,22 @@ const TaskPrioritizer: React.FC = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const jsonFileInputRef = useRef<HTMLInputElement>(null);
 
+  // Effect to finalize priorities when comparisons are complete
+  useEffect(() => {
+    // Only run if in compare stage and all comparisons are done
+    if (
+      stage === 'compare' &&
+      comparisonsSafe.length > 0 &&
+      currentComparison >= comparisonsSafe.length
+    ) {
+      console.log(
+        'useEffect: All comparisons done, calling finalizePriorities...'
+      );
+      finalizePriorities();
+    }
+    // Depend on currentComparison, comparisonsSafe.length, and stage
+  }, [currentComparison, comparisonsSafe.length, stage]);
+
   // Add a new task to the list
   const addTask = (): void => {
     if (newTask.trim() !== '') {
@@ -203,43 +225,57 @@ const TaskPrioritizer: React.FC = () => {
     }
 
     // Update tasks array with new priority values
-    setTasks((currentTasks) =>
-      currentTasks.map((task) => {
+    setTasks((currentTasks) => {
+      // Log the state received by the update function
+      console.log(
+        `chooseTask: Updating priority for ID ${chosenId}. State received:`,
+        JSON.stringify(currentTasks, null, 2)
+      );
+      const updatedTasks = currentTasks.map((task) => {
         if (task.id === chosenId) {
+          // Log the specific change being made
+          console.log(
+            `chooseTask: Incrementing priority for task ${task.id} from ${task.priority}`
+          );
           return { ...task, priority: task.priority + 1 };
         }
         return task;
-      })
-    );
+      });
+      // Log the state being returned by the update function
+      console.log(
+        `chooseTask: State after update:`,
+        JSON.stringify(updatedTasks, null, 2)
+      );
+      return updatedTasks;
+    });
 
-    // Move to next comparison or results
-    if (currentComparison < comparisonsSafe.length - 1) {
-      setCurrentComparison(currentComparison + 1);
-    } else {
-      finalizePriorities();
-    }
+    // Only increment comparison index, let useEffect handle finalization
+    setCurrentComparison(currentComparison + 1);
   };
 
   // Skip the current comparison
   const skipComparison = (): void => {
-    if (currentComparison < comparisonsSafe.length - 1) {
+    // Only increment comparison index, let useEffect handle finalization
+    if (currentComparison < comparisonsSafe.length) {
+      // Ensure we don't increment past the end unnecessarily
       setCurrentComparison(currentComparison + 1);
-    } else {
-      finalizePriorities();
     }
   };
 
-  // Sort tasks by priority and show results
+  // Sort tasks by priority and show results (simplified)
   const finalizePriorities = (): void => {
-    // Use the latest tasks state for sorting via the setTasks callback
-    setTasks((currentTasks) => {
-      const sorted = [...currentTasks].sort((a, b) => b.priority - a.priority);
-      setPrioritizedTasks(sorted);
-      setStage('results');
-      // Return currentTasks to potentially avoid unnecessary re-render if tasks didn't change,
-      // although the primary purpose here is accessing the latest state.
-      return currentTasks;
-    });
+    // Now directly use tasksSafe, assuming useEffect ensures state is updated
+    console.log(
+      'finalizePriorities: Sorting tasks:',
+      JSON.stringify(tasksSafe, null, 2)
+    );
+    const sorted = [...tasksSafe].sort((a, b) => b.priority - a.priority);
+    console.log(
+      'finalizePriorities: Sorted tasks:',
+      JSON.stringify(sorted, null, 2)
+    );
+    setPrioritizedTasks(sorted);
+    setStage('results');
   };
 
   // Mark a task as completed
