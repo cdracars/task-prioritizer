@@ -231,12 +231,14 @@ const TaskPrioritizer: React.FC = () => {
 
   // Sort tasks by priority and show results
   const finalizePriorities = (): void => {
-    // Use the latest tasks state for sorting
+    // Use the latest tasks state for sorting via the setTasks callback
     setTasks((currentTasks) => {
       const sorted = [...currentTasks].sort((a, b) => b.priority - a.priority);
       setPrioritizedTasks(sorted);
       setStage('results');
-      return currentTasks; // Return currentTasks to avoid unnecessary re-render if tasks didn't change
+      // Return currentTasks to potentially avoid unnecessary re-render if tasks didn't change,
+      // although the primary purpose here is accessing the latest state.
+      return currentTasks;
     });
   };
 
