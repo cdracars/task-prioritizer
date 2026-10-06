@@ -42,4 +42,16 @@ describe('App', () => {
     expect(screen.getByRole('banner')).toBeInTheDocument(); // <header>
     expect(screen.getByRole('main')).toBeInTheDocument(); // <main>
   });
+
+  it('links to project support and source code', () => {
+    render(<App />);
+
+    expect(
+      screen.getByRole('link', { name: /support on ko-fi/i })
+    ).toHaveAttribute('href', 'https://ko-fi.com/cdracars66494');
+    expect(screen.getByRole('link', { name: /github/i })).toHaveAttribute(
+      'href',
+      'https://github.com/cdracars/task-prioritizer'
+    );
+  });
 });
