@@ -10,9 +10,9 @@ interface MetaTagsProps {
  * Component for managing meta tags to improve SEO
  */
 const MetaTags: React.FC<MetaTagsProps> = ({
-  title = 'Task Prioritizer - Organize Your Tasks Effectively',
-  description = 'A simple app to help you prioritize your tasks through pairwise comparisons',
-  canonicalUrl = 'https://taskprioritizer.app',
+  title = 'Task Prioritizer – Compare Tasks & Decide What to Do Next | Dracars',
+  description = 'Compare tasks side by side to decide what to do next with this free task prioritizer.',
+  canonicalUrl = 'https://task-prioritizer.dracars.com/',
 }) => {
   return (
     <Helmet>
