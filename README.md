@@ -39,23 +39,26 @@ Task Prioritizer helps you organize your to-do list by using a simple comparison
 
 ### Prerequisites
 
-- Node.js (v14 or higher)
+- Node.js (v20 or higher)
 - Yarn package manager
 
 ### Setup
 
 1. Clone the repository
+
    ```bash
    git clone https://github.com/yourusername/task-prioritizer.git
    cd task-prioritizer
    ```
 
 2. Install dependencies
+
    ```bash
    yarn install
    ```
 
 3. Start the development server
+
    ```bash
    yarn dev
    ```
@@ -66,20 +69,29 @@ Task Prioritizer helps you organize your to-do list by using a simple comparison
 
 - `yarn dev` or `yarn start` - Start development server
 - `yarn build` - Build for production
+- `yarn preview` - Build and serve the production app with Wrangler
+- `yarn deploy` - Build and deploy to Cloudflare Workers
 - `yarn test` - Run tests
 - `yarn format` - Format code using Prettier
 - `yarn lint:check` - Check for linting issues
 
 ## Deployment
 
-The app can be deployed to any static site hosting service:
+The app deploys to Cloudflare Workers with Wrangler. The generated React build is served as static assets, with single-page-app fallbacks enabled.
 
-1. Build the production version
+1. Authenticate Wrangler with the Cloudflare account that owns the target zone:
+
    ```bash
-   yarn build
+   yarn wrangler login
    ```
 
-2. Deploy the contents of the `build` directory
+2. Deploy the app:
+
+   ```bash
+   yarn deploy
+   ```
+
+3. To attach `task-prioritizer.dracars.com`, add the custom domain to the deployed Worker in Cloudflare's dashboard. Then keep the canonical URL in `src/components/MetaTags.tsx` pointed at that domain.
 
 ## License
 

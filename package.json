@@ -17,6 +17,8 @@
     "start": "react-scripts start",
     "dev": "react-scripts start",
     "build": "react-scripts build",
+    "preview": "yarn build && wrangler dev",
+    "deploy": "yarn build && wrangler deploy",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "format": "prettier --write \"src/**/*.{ts,tsx,css,json}\" \"public/**/*.html\"",
@@ -57,7 +59,8 @@
     "postcss": "^8.4.27",
     "prettier": "^3.5.3",
     "tailwindcss": "^3.3.3",
-    "typescript": "5.1.6"
+    "typescript": "5.1.6",
+    "wrangler": "4.20.0"
   },
   "packageManager": "yarn@4.9.1"
 }
