@@ -33,6 +33,22 @@ function App(): ReactElement {
                 <TaskPrioritizer />
               </main>
             </ErrorBoundary>
+            <footer className="mx-auto max-w-md px-4 pb-6 text-center text-sm text-muted-foreground">
+              <a
+                className="inline-flex items-center gap-2 underline underline-offset-4 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                href="https://ko-fi.com/cdracars66494"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  src="https://storage.ko-fi.com/cdn/cup-border.png"
+                  alt=""
+                  width="24"
+                  height="16"
+                />
+                Support this free tool on Ko-fi
+              </a>
+            </footer>
           </div>
         </ThemeProvider>
       </ErrorBoundary>
