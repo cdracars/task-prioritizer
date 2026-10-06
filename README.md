@@ -96,3 +96,8 @@ The app deploys to Cloudflare Workers with Wrangler. The generated React build i
 ## License
 
 MIT
+
+## Support
+
+If Task Prioritizer is useful to you, you can support its continued upkeep on
+[Ko-fi](https://ko-fi.com/cdracars66494).
