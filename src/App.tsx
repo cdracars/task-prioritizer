@@ -64,6 +64,35 @@ function App(): ReactElement {
             <ErrorBoundary>
               <main>
                 <TaskPrioritizer />
+                <section
+                  aria-labelledby="ranking-guide-heading"
+                  className="mx-auto max-w-2xl px-4 pb-10 pt-2 text-sm leading-6 text-muted-foreground"
+                >
+                  <h2
+                    id="ranking-guide-heading"
+                    className="mb-2 text-base font-semibold text-foreground"
+                  >
+                    How task ranking works
+                  </h2>
+                  <p>
+                    Add your tasks, then choose the more important item in each
+                    pair. Every pair is shown once, and the final list is sorted
+                    by how often you chose each task. Skipped pairs do not add a
+                    preference.
+                  </p>
+                  <p className="mt-3">
+                    This is a way to organize your own judgment, not an
+                    algorithmic recommendation. It does not weigh due dates,
+                    effort, or dependencies. Because every pair is compared,
+                    10 tasks take 45 choices and 20 take 190; for a large list,
+                    start with the tasks you are genuinely unsure how to order.
+                  </p>
+                  <p className="mt-3">
+                    Your list is saved in this browser. Import tasks in bulk,
+                    then export the finished order as text or JSON when you want
+                    to use it elsewhere.
+                  </p>
+                </section>
               </main>
             </ErrorBoundary>
             <footer className="mx-auto max-w-md px-4 pb-6 pt-2">
