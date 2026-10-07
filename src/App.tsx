@@ -83,8 +83,8 @@ function App(): ReactElement {
                   <p className="mt-3">
                     This is a way to organize your own judgment, not an
                     algorithmic recommendation. It does not weigh due dates,
-                    effort, or dependencies. Because every pair is compared,
-                    10 tasks take 45 choices and 20 take 190; for a large list,
+                    effort, or dependencies. Because every pair is compared, 10
+                    tasks take 45 choices and 20 take 190; for a large list,
                     start with the tasks you are genuinely unsure how to order.
                   </p>
                   <p className="mt-3">
