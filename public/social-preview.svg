@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#f8fafc"/><path d="M0 500h1200v130H0z" fill="#172554"/><circle cx="1000" cy="130" r="250" fill="#dbeafe"/>
+  <g font-family="Arial,sans-serif"><text x="84" y="110" fill="#1d4ed8" font-size="25" font-weight="700" letter-spacing="4">FREE BROWSER TOOL</text><text x="84" y="225" fill="#172554" font-size="72" font-weight="700">Task Prioritizer</text><text x="84" y="292" fill="#334155" font-size="32">Compare two tasks. Find what matters next.</text>
+  <g transform="translate(790 245)"><rect width="320" height="215" rx="24" fill="#fff" stroke="#cbd5e1" stroke-width="3"/><rect x="28" y="30" width="264" height="64" rx="14" fill="#eff6ff"/><text x="52" y="72" fill="#172554" font-size="22" font-weight="700">Write project outline</text><rect x="28" y="116" width="264" height="64" rx="14" fill="#dcfce7"/><text x="52" y="158" fill="#14532d" font-size="22" font-weight="700">Fix launch blocker</text><circle cx="286" cy="101" r="24" fill="#1d4ed8"/><text x="277" y="110" fill="#fff" font-size="25" font-weight="700">›</text></g>
+  <text x="84" y="565" fill="#fff" font-size="26" font-weight="700">Compare · Decide · Move forward</text><text x="1115" y="565" fill="#bfdbfe" font-size="20" text-anchor="end">dracars.com</text></g>
+</svg>
