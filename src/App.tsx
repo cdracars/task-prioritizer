@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
-import { Coffee, Heart } from 'lucide-react';
+import { Coffee, Heart, ListTodo } from 'lucide-react';
 import { ThemeProvider } from './components/theme-provider';
 import { ModeToggle } from './components/mode-toggle';
 import TaskPrioritizer from './components/TaskPrioritizer';
@@ -39,21 +39,18 @@ function App(): ReactElement {
               />
             </svg>
           </a>
-          <div className="min-h-screen bg-background">
-            <header className="border-b border-border p-4">
-              <div className="flex justify-between items-center max-w-md mx-auto">
+          <div className="app-shell min-h-screen bg-background">
+            <header className="border-b border-border/80 px-4 py-5">
+              <div className="mx-auto flex max-w-4xl items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <img
-                    src="/favicon.svg"
-                    alt=""
-                    aria-hidden="true"
-                    className="h-9 w-9 rounded-xl shadow-sm"
-                  />
+                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary text-primary-foreground">
+                    <ListTodo aria-hidden="true" className="h-6 w-6" />
+                  </div>
                   <div>
-                    <h1 className="text-xl font-semibold leading-tight text-foreground">
+                    <h1 className="text-xl font-bold leading-tight tracking-tight text-foreground sm:text-2xl">
                       Task Prioritizer
                     </h1>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="mt-0.5 text-sm text-muted-foreground">
                       Compare. Decide. Move forward.
                     </p>
                   </div>
@@ -62,11 +59,11 @@ function App(): ReactElement {
               </div>
             </header>
             <ErrorBoundary>
-              <main>
+              <main className="mx-auto max-w-4xl px-4 pb-12 pt-10 sm:pb-16 sm:pt-14">
                 <TaskPrioritizer />
                 <section
                   aria-labelledby="ranking-guide-heading"
-                  className="mx-auto max-w-2xl px-4 pb-10 pt-2 text-sm leading-6 text-muted-foreground"
+                  className="mx-auto mt-7 max-w-3xl rounded-2xl border border-border/80 bg-card/70 p-5 text-sm leading-6 text-muted-foreground sm:p-7"
                 >
                   <h2
                     id="ranking-guide-heading"
@@ -95,7 +92,7 @@ function App(): ReactElement {
                 </section>
               </main>
             </ErrorBoundary>
-            <footer className="mx-auto max-w-md px-4 pb-6 pt-2">
+            <footer className="mx-auto max-w-3xl px-4 pb-8 pt-2">
               <nav
                 aria-label="Project links"
                 className="flex flex-col items-center justify-between gap-3 border-t border-border pt-5 sm:flex-row"
@@ -104,12 +101,12 @@ function App(): ReactElement {
                   Made freely for clearer next steps
                   <Heart
                     aria-hidden="true"
-                    className="h-3.5 w-3.5 fill-current text-[#c9403c]"
+                    className="h-3.5 w-3.5 fill-current text-[#a9503b]"
                   />
                 </p>
                 <div className="flex items-center gap-2">
                   <a
-                    className="inline-flex h-9 items-center gap-1.5 rounded-md bg-[#ff5e5b] px-3 text-sm font-semibold text-slate-950 transition-colors hover:bg-[#ff7774] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                    className="inline-flex h-10 items-center gap-1.5 rounded-xl bg-[#a9503b] px-4 text-sm font-semibold text-white transition-colors hover:bg-[#91432f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                     href="https://ko-fi.com/cdracars66494"
                     target="_blank"
                     rel="noreferrer"

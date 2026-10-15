@@ -505,7 +505,7 @@ const TaskPrioritizer: React.FC = () => {
   const [leftTask, rightTask] = getCurrentComparisonTasks();
 
   return (
-    <div className="flex flex-col items-center p-4 max-w-md mx-auto">
+    <div className="w-full max-w-3xl rounded-2xl border border-border/80 bg-card p-5 sm:p-8">
       {/* Input Stage */}
       {stage === 'input' && (
         <div className="w-full">
@@ -531,13 +531,13 @@ const TaskPrioritizer: React.FC = () => {
                 }
                 onKeyPress={handleKeyPress}
                 placeholder="Enter a task..."
-                className="flex-grow p-2 border border-input rounded-l focus:outline-none focus:ring-2 focus:ring-ring bg-background text-foreground"
+                className="min-h-12 flex-grow rounded-l-xl border border-input bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
                 aria-required="true"
                 maxLength={200}
               />
               <Button
                 type="submit"
-                className="rounded-l-none"
+                className="min-h-12 rounded-l-none rounded-r-xl px-5"
                 aria-label="Add task"
               >
                 Add
@@ -545,11 +545,11 @@ const TaskPrioritizer: React.FC = () => {
             </div>
           </form>
 
-          <div className="flex justify-between mb-4">
+          <div className="mb-7 flex flex-wrap items-center justify-between gap-2">
             <Button
               variant="ghost"
               onClick={() => setShowBulkInput(!showBulkInput)}
-              className="text-primary hover:text-primary/80 font-medium"
+              className="font-semibold text-primary hover:text-primary/80"
             >
               {showBulkInput ? 'Hide Bulk Import' : 'Bulk Import Tasks'}
             </Button>
@@ -564,21 +564,21 @@ const TaskPrioritizer: React.FC = () => {
             />
             <label
               htmlFor="fileInput"
-              className="text-primary hover:text-primary/80 font-medium cursor-pointer"
+              className="cursor-pointer font-semibold text-primary hover:text-primary/80"
             >
               Upload File (.txt, .csv)
             </label>
           </div>
 
           {showBulkInput && (
-            <div className="mb-4">
+            <div className="mb-6 rounded-xl border border-border bg-background p-3">
               <textarea
                 value={bulkInput}
                 onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
                   setBulkInput(e.target.value)
                 }
                 placeholder="Enter tasks, one per line..."
-                className="w-full p-2 border border-input rounded min-h-32 focus:outline-none focus:ring-2 focus:ring-ring bg-background text-foreground"
+                className="min-h-32 w-full rounded-lg border border-input bg-background p-3 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring"
               />
               <Button
                 onClick={importTasks}
@@ -590,9 +590,9 @@ const TaskPrioritizer: React.FC = () => {
             </div>
           )}
 
-          <div className="mb-4">
-            <div className="flex justify-between items-center mb-2">
-              <h2 className="text-lg font-semibold">Your Tasks:</h2>
+          <div className="mb-6">
+            <div className="mb-3 flex items-center justify-between">
+              <h2 className="text-lg font-bold tracking-tight">Your Tasks</h2>
               <span className="text-sm text-muted-foreground">
                 {tasksSafe.length} tasks
               </span>
@@ -601,13 +601,13 @@ const TaskPrioritizer: React.FC = () => {
             {tasksSafe.length === 0 ? (
               <p className="text-muted-foreground italic">No tasks added yet</p>
             ) : (
-              <ul className="border border-border rounded-lg divide-y max-h-64 overflow-y-auto bg-card">
+              <ul className="max-h-80 divide-y divide-border overflow-y-auto rounded-xl border border-border bg-background">
                 {tasksSafe.map((task) => (
                   <li
                     key={task.id}
-                    className="p-2 flex justify-between items-center"
+                    className="flex items-center justify-between gap-3 px-4 py-3 transition-colors hover:bg-accent/60"
                   >
-                    <span className="text-foreground break-all">
+                    <span className="min-w-0 break-words text-foreground">
                       {task.text}
                     </span>
                     <Button
@@ -617,7 +617,7 @@ const TaskPrioritizer: React.FC = () => {
                         )
                       }
                       variant="ghost"
-                      className="h-8 text-destructive hover:text-destructive/80 ml-2 flex-shrink-0"
+                      className="ml-2 h-8 shrink-0 text-destructive hover:text-destructive/80"
                     >
                       Remove
                     </Button>
@@ -627,7 +627,7 @@ const TaskPrioritizer: React.FC = () => {
             )}
           </div>
 
-          <div className="flex gap-2">
+          <div className="flex flex-col-reverse gap-3 border-t border-border pt-5 sm:flex-row">
             <Button
               onClick={() => setTasks([])}
               disabled={tasksSafe.length === 0}
@@ -640,9 +640,7 @@ const TaskPrioritizer: React.FC = () => {
             <Button
               onClick={startPrioritization}
               disabled={tasksSafe.length < 2}
-              className={`flex-1 ${
-                tasksSafe.length < 2 ? 'opacity-50 cursor-not-allowed' : ''
-              }`}
+              className="min-h-12 flex-1 rounded-xl font-semibold"
             >
               Start Prioritizing
             </Button>
@@ -653,18 +651,18 @@ const TaskPrioritizer: React.FC = () => {
       {/* Compare Stage */}
       {stage === 'compare' && leftTask && rightTask && (
         <div className="w-full">
-          <div className="mb-4 w-full bg-muted rounded-full h-2.5">
+          <div className="mb-3 h-2.5 w-full rounded-full bg-muted">
             <div
-              className="bg-primary h-2.5 rounded-full transition-all duration-300 ease-out"
+              className="h-2.5 rounded-full bg-primary transition-all duration-300 ease-out"
               style={{ width: `${progressPercentage}%` }}
             ></div>
           </div>
-          <p className="text-center mb-4 text-muted-foreground">
+          <p className="mb-6 text-center text-sm font-medium text-muted-foreground">
             Progress: {currentComparison + 1} of {comparisonsSafe.length}{' '}
             comparisons
           </p>
 
-          <h2 className="text-lg font-semibold text-center mb-6">
+          <h2 className="mb-6 text-center text-xl font-bold tracking-tight sm:text-2xl">
             Which task should be done first?
           </h2>
 
@@ -672,7 +670,7 @@ const TaskPrioritizer: React.FC = () => {
             <Button
               onClick={() => chooseTask(leftTask.id)}
               variant="outline"
-              className="flex-1 p-4 h-auto border-2 border-primary text-foreground hover:bg-accent hover:text-accent-foreground text-left break-words whitespace-normal min-h-[60px]"
+              className="min-h-28 flex-1 whitespace-normal break-words rounded-xl border-2 border-border bg-background p-5 text-left text-base font-semibold text-foreground hover:border-primary hover:bg-accent hover:text-accent-foreground sm:min-h-36 sm:p-6"
             >
               {leftTask.text}
             </Button>
@@ -680,7 +678,7 @@ const TaskPrioritizer: React.FC = () => {
             <Button
               onClick={() => chooseTask(rightTask.id)}
               variant="outline"
-              className="flex-1 p-4 h-auto border-2 border-primary text-foreground hover:bg-accent hover:text-accent-foreground text-left break-words whitespace-normal min-h-[60px]"
+              className="min-h-28 flex-1 whitespace-normal break-words rounded-xl border-2 border-border bg-background p-5 text-left text-base font-semibold text-foreground hover:border-primary hover:bg-accent hover:text-accent-foreground sm:min-h-36 sm:p-6"
             >
               {rightTask.text}
             </Button>
