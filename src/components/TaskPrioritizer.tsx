@@ -505,7 +505,7 @@ const TaskPrioritizer: React.FC = () => {
   const [leftTask, rightTask] = getCurrentComparisonTasks();
 
   return (
-    <div className="w-full max-w-3xl rounded-2xl border border-border/80 bg-card p-5 sm:p-8">
+    <div className="mx-auto w-full max-w-3xl rounded-2xl border border-border/80 bg-card p-5 sm:p-8">
       {/* Input Stage */}
       {stage === 'input' && (
         <div className="w-full">
