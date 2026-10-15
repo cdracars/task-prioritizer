@@ -22,22 +22,22 @@
   :root {
     color-scheme: light;
     --background: 338 27% 91%;
-    --foreground: 286 12% 20%;
+    --foreground: 286 16% 16%;
 
     --card: 330 35% 98%;
-    --card-foreground: 286 12% 20%;
+    --card-foreground: 286 16% 16%;
     --popover: 330 35% 98%;
-    --popover-foreground: 286 12% 20%;
+    --popover-foreground: 286 16% 16%;
 
     --primary: 286 18% 26%;
     --primary-foreground: 330 35% 98%;
     --secondary: 326 20% 87%;
-    --secondary-foreground: 286 16% 24%;
+    --secondary-foreground: 286 18% 18%;
 
     --muted: 326 20% 88%;
-    --muted-foreground: 285 9% 39%;
+    --muted-foreground: 285 12% 29%;
     --accent: 326 24% 86%;
-    --accent-foreground: 286 18% 24%;
+    --accent-foreground: 286 20% 17%;
 
     --destructive: 8 48% 45%;
     --destructive-foreground: 0 0% 100%;
